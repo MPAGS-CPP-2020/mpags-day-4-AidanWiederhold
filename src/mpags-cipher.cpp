@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
 
   // Handle version, if requested
   if (settings.versionRequested) {
-    std::cout << "0.2.0" << std::endl;
+    std::cout << "0.3.0" << std::endl;
     // Like help, requires no further action, so return from main,
     // with 0 used to indicate success
     return 0;
