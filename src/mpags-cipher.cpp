@@ -10,6 +10,7 @@
 #include "TransformChar.hpp"
 #include "ProcessCommandLine.hpp"
 #include "CaesarCipher.hpp"
+#include "PlayfairCipher.hpp"
   
 // Main function of the mpags-cipher program
 int main(int argc, char* argv[])
@@ -55,7 +56,7 @@ int main(int argc, char* argv[])
 
   // Handle version, if requested
   if (settings.versionRequested) {
-    std::cout << "0.2.0" << std::endl;
+    std::cout << "0.3.0" << std::endl;
     // Like help, requires no further action, so return from main,
     // with 0 used to indicate success
     return 0;
@@ -96,16 +97,16 @@ int main(int argc, char* argv[])
   switch ( settings.cipherType ) {
     case CipherType::Caesar :
       {
-	// Run the Caesar cipher (using the specified key and encrypt/decrypt flag) on the input text
-	CaesarCipher cipher { settings.cipherKey };
-	outputText = cipher.applyCipher( inputText, settings.cipherMode );
-	break;
+	      // Run the Caesar cipher (using the specified key and encrypt/decrypt flag) on the input text
+	      CaesarCipher cipher { settings.cipherKey };
+	      outputText = cipher.applyCipher( inputText, settings.cipherMode );
+	      break;
       }
     case CipherType::Playfair :
       {
-	std::cerr << "[warning] Playfair cipher not yet implemented" << std::endl;
-	outputText = inputText;
-	break;
+	      PlayfairCipher cipher{settings.cipherKey};
+	      outputText = cipher.applyCipher( inputText, settings.cipherMode );
+	      break;
       }
   }
 
